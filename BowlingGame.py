@@ -11,7 +11,7 @@ class BowlingGame:
     def score(self):
         result = 0
         rollIndex=0
-        for frameIndex in range(10):                #for loop is going to run 10 times
+        for frameIndex in range(10):                
             # conditional statements for checking different cases targeting index of an array
             if self.rolls[rollIndex] == 10:
                 result += 10 + self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2]     # score target 10 points plus next 2 index numbers (total of these 2 niumbers as a bonus points) as a bonus points
