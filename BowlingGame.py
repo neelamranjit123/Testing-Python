@@ -11,30 +11,31 @@ class BowlingGame:
     def score(self):
         result = 0
         rollIndex=0
-        for frameIndex in range(10):
-            if frameIndex in range(10):
-                result += self.StrikeScore(rollIndex)
-                rollIndex +=1
-            elif self.isSpare(rollIndex):
-                result += self.spareScore(rollIndex)
-                rollIndex +=2
+        for frameIndex in range(10):                #for loop is going to run 10 times
+            # conditional statements for checking different cases targeting index of an array
+            if self.rolls[rollIndex] == 10:
+                result += 10 + self.rolls[rollIndex + 1] + self.rolls[rollIndex + 2]     # score target 10 points plus next 2 index numbers (total of these 2 niumbers as a bonus points) as a bonus points
+                rollIndex += 1
+            elif self.rolls[rollIndex] + self.rolls[rollIndex + 1] == 10:
+                result += 10 + self.rolls[rollIndex + 2]                       #score targeting 10 points plus 1 bonus ball points if 2 ball in a frame are 10
+                rollIndex += 2
             else:
-                result += self.frameScore(rollIndex)
-            rollIndex +=2
-            return result
+                result += self.rolls[rollIndex] + self.rolls[rollIndex + 1]     # score targeting just normal ball points
+                rollIndex += 2
+        return result
 
-    def isStrike(self, rollIndex):
-        return self.rolls[rollIndex] == 10
-    def isSpare(self, rollIndex):
-        return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10
-    def stickeScore(self,rollIndex):
-        return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
+    # def isStrike(self, rollIndex):
+    #     return self.rolls[rollIndex] == 10
+    # def isSpare(self, rollIndex):
+    #     return self.rolls[rollIndex]+ self.rolls[rollIndex+1]==10
+    # def stickeScore(self,rollIndex):
+    #     return  10+ self.rolls[rollIndex+1]+ self.rolls[rollIndex+2]
 
-    def spareScore(self,rollIndex):
-        return  10+ self.rolls[rollIndex+2]
+    # def spareScore(self,rollIndex):
+    #     return  10+ self.rolls[rollIndex+2]
 
-    def frameScore(self, rollIndex):
-        return self.rolls[rollIndex] + self.rolls[rollIndex + 1]
+    # def frameScore(self, rollIndex):
+    #     return self.rolls[rollIndex] + self.rolls[rollIndex + 1]
 		
 
 #Your tasks for code parts:
